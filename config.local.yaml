@@ -1,0 +1,20 @@
+hosts:
+  - adora.local
+php: 7.4
+extensions:
+  - chassis/xdebug
+  - chassis/mailhog
+  - chassis/sequelpro
+  - chassis/whoops
+  - chassis/phpunit
+  - chassis/composer
+  - chassis/nodejs
+  - chassis/chassis_elasticsearch
+  - chassis/tester
+  - chassis/npm
+  - chassis/db_backup
+  - chassis/fish
+  - chassis/debugging
+  - chassis/wp_cli
+  - chassis/intl
+  - chassis/imagick
