@@ -12,7 +12,6 @@ extensions:
   - chassis/chassis_elasticsearch
   - chassis/tester
   - chassis/npm
-  - chassis/db_backup
   - chassis/fish
   - chassis/debugging
   - chassis/wp_cli
