@@ -10,7 +10,7 @@
 
 ## Setup
 
-1. Clone Chassis into a new folder: `ggit clone https://github.com/Chassis/Chassis.git hannah`.
+1. Clone Chassis into a new folder: `git clone https://github.com/Chassis/Chassis.git hannah`.
 1. Change into the newly cloned folder: `cd hannah`.
 1. Clone this repo into a content folder: `git clone https://github.com/BronsonQuick/Hannah.git content`.
 1. Copy `local-config-sample.php` and rename it to `local-config.php`. Use this file to define and PHP constants you need for the project.
