@@ -17,3 +17,6 @@ extensions:
   - chassis/wp_cli
   - chassis/intl
   - chassis/imagick
+composer:
+    paths:
+        - /vagrant/content/plugins/last-fm-api-integration

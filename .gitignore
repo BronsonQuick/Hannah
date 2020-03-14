@@ -1,0 +1,11 @@
+# Plugins to ignore
+plugins/debug-bar/
+plugins/debug-bar-cron/
+plugins/debug-bar-extender/
+plugins/debug-bar-transients/
+plugins/log-deprecated-notices/
+plugins/rewrite-rules-inspector/
+
+node_modules/
+vendor/
+custom.ini
