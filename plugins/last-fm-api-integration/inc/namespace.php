@@ -2,6 +2,9 @@
 
 namespace Hannah\Last_FM;
 
+use Barryvanveen\Lastfm\Lastfm;
+use GuzzleHttp\Client;
+
 define( 'LAST_FM_PREFIX', 'last_fm_' );
 
 /**
