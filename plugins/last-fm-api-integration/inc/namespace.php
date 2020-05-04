@@ -26,4 +26,15 @@ function register_options_page() {
 			'icon_url'     => 'dashicons-format-audio', // Menu icon. Only applicable if 'parent_slug' is left empty.
 		]
 	);
+
+	// Add the API Key field
+	$cmb_options->add_field( 
+		[
+			'name' => __( 'LastFM API key', 'last_fm' ),
+			'desc' => __( 'Enter your LastFM API Key. To get an API key, log into your Last.fm account and visit the <a target="_blank" href="https://www.last.fm/api/account/create">Create an API account</a> page.', 'last_fm' ),
+			'id'   => 'lastfm_api_key',
+			'type' => 'text',
+			'default' => '',
+		]
+	);
 }
