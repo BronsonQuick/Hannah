@@ -2,6 +2,8 @@
 
 namespace Hannah\Last_FM;
 
+define( 'LAST_FM_PREFIX', 'last_fm_' );
+
 /**
  * Bootstrap the plugin.
  *

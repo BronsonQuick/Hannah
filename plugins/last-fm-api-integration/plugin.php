@@ -20,8 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
-define( 'LAST_FM_PREFIX', 'last_fm_' );
-
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/inc/namespace.php';
 
