@@ -2,6 +2,9 @@
 
 namespace Hannah\Last_FM;
 
+use Barryvanveen\Lastfm\Lastfm;
+use GuzzleHttp\Client;
+
 define( 'LAST_FM_PREFIX', 'last_fm_' );
 
 /**
@@ -12,6 +15,23 @@ define( 'LAST_FM_PREFIX', 'last_fm_' );
 function bootstrap() {
 	require_once __DIR__ . '../../vendor/cmb2/cmb2/init.php';
 	add_action( 'cmb2_admin_init', __NAMESPACE__ . '\\register_options_page' );
+	$connection = connect_to_api();
+}
+
+/**
+ * Get the Last FM API Key
+ * @return string The public API key string
+ */
+function get_api_key() {
+	return get_plugin_option( 'lastfm_api_key' );
+}
+
+/**
+ * Connect to the LastFM Api
+ * @return instance
+ */
+function connect_to_api() {
+	return new Lastfm( new Client(), get_api_key() );
 }
 
 /**
@@ -39,4 +59,30 @@ function register_options_page() {
 			'default' => '',
 		]
 	);
+}
+
+
+/**
+ * Wrapper function around cmb2_get_option
+ * @since  0.1.0
+ * @param  string $key     Options array key
+ * @param  mixed  $default Optional default value
+ * @return mixed           Option value
+ */
+function get_plugin_option( $key = '', $default = false ) {
+
+	if ( function_exists( 'cmb2_get_option' ) ) {
+		return cmb2_get_option( 'last_fm__plugin_options', $key, $default );
+	}
+
+	$opts = get_option( 'last_fm__plugin_options', $default );
+	$val = $default;
+
+	if ( 'all' == $key ) {
+		$val = $opts;
+	} elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
+		$val = $opts[ $key ];
+	}
+
+	return $val;
 }
