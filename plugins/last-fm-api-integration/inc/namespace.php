@@ -6,6 +6,7 @@ use Barryvanveen\Lastfm\Lastfm;
 use GuzzleHttp\Client;
 
 define( 'LAST_FM_PREFIX', 'last_fm_' );
+define( 'LAST_FM_API_KEY', 'plzkey' );
 
 /**
  * Bootstrap the plugin.
