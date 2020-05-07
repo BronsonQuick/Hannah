@@ -39,7 +39,7 @@ function get_api_key() {
  */
 function get_stored_key() {
 	$options = get_option( LAST_FM_PREFIX . 'plugin_options', false );
-	if ( is_array( $options ) && array_key_exists( 'lastfm_api_key', $options ) && false !== $options[ 'lastfm_api_key' ] ) {
+	if ( is_array( $options ) && array_key_exists( 'lastfm_api_key', $options ) && false !== $options['lastfm_api_key'] ) {
 		return $options['lastfm_api_key'];
 	} else {
 		return false;
