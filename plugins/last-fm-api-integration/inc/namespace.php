@@ -6,7 +6,7 @@ use Barryvanveen\Lastfm\Lastfm;
 use GuzzleHttp\Client;
 
 define( 'LAST_FM_PREFIX', 'last_fm_' );
-// define( 'LAST_FM_API_KEY', 'plzkey' );
+define( 'LAST_FM_API_KEY', '34aec904d2922b50e9fe528fffa55c8c' );
 
 /**
  * Bootstrap the plugin.
@@ -17,31 +17,33 @@ function bootstrap() {
 	require_once __DIR__ . '../../vendor/cmb2/cmb2/init.php';
 	add_action( 'cmb2_admin_init', __NAMESPACE__ . '\\register_options_page' );
 
-	$api_key = get_key();
+	$api_key = get_api_key();
 }
 
 /**
- * Get the API key. 
+ * Get the API key.
  * This looks for a constant or gets the stored option.
  * @return string The API key string
  */
-function get_key() {
-	if ( defined( 'LAST_FM_API_KEY' ) ) {
-		return LAST_FM_API_KEY;
-	}
-	return get_stored_key();
-}
-
-/**
- * Get the stored API key from our options
- * @return string The API key string
- */
-function get_stored_key() {
-	$key = 'storedkeyplz'; // Get the option from the database
+function get_api_key() {
+	$key = get_stored_key();
 	if ( defined( 'LAST_FM_API_KEY' ) && empty( $key ) ) {
 		$key = update_stored_key( LAST_FM_API_KEY );
 	}
 	return $key;
+}
+
+/**
+ * Get the stored API key from our options
+ * @return string|false The API key string
+ */
+function get_stored_key() {
+	$options = get_option( LAST_FM_PREFIX . 'plugin_options', false );
+	if ( is_array( $options ) && array_key_exists( 'lastfm_api_key', $options ) && false !== $options[ 'lastfm_api_key' ] ) {
+		return $options['lastfm_api_key'];
+	} else {
+		return false;
+	}
 }
 
 /**
