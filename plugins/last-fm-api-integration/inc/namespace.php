@@ -60,10 +60,10 @@ function update_stored_key( $value ) {
 function register_options_page() {
 	$cmb_options = new_cmb2_box(
 		[
-			'id'           => LAST_FM_PREFIX . '_plugin_options_page',
+			'id'           => LAST_FM_PREFIX . 'plugin_options_page',
 			'title'        => __( 'LastFM Options', 'last_fm' ),
 			'object_types' => [ 'options-page' ],
-			'option_key'   => LAST_FM_PREFIX . '_plugin_options', // The option key and admin menu page slug.
+			'option_key'   => LAST_FM_PREFIX . 'plugin_options', // The option key and admin menu page slug.
 			'icon_url'     => 'dashicons-format-audio', // Menu icon. Only applicable if 'parent_slug' is left empty.
 		]
 	);
