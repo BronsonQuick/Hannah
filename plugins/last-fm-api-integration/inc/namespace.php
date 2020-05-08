@@ -23,30 +23,34 @@ function bootstrap() {
 /**
  * Get the API key.
  * This looks for a constant or gets the stored option.
- * @return string The API key string
+ * @return string|false The API key string or the boolean false
  */
 function get_api_key() {
 	$key = get_stored_key();
+
 	if ( defined( 'LAST_FM_API_KEY' ) && empty( $key ) ) {
 		$key = update_stored_key( LAST_FM_API_KEY );
 	}
+
 	if ( defined( 'LAST_FM_API_KEY' ) ) {
 		return LAST_FM_API_KEY;
 	}
+
 	return $key;
 }
 
 /**
  * Get the stored API key from our options
- * @return string|false The API key string
+ * @return string|false The API key string or the boolean false
  */
 function get_stored_key() {
 	$options = get_plugin_options();
+
 	if ( is_array( $options ) && array_key_exists( 'lastfm_api_key', $options ) && false !== $options['lastfm_api_key'] ) {
 		return $options['lastfm_api_key'];
-	} else {
-		return false;
 	}
+
+	return false;
 }
 
 /**
@@ -55,11 +59,12 @@ function get_stored_key() {
  */
 function get_plugin_options() {
 	$options = get_option( LAST_FM_PREFIX . 'plugin_options', false );
+
 	if ( is_array( $options ) ) {
 		return $options;
-	} else {
-		return false;
 	}
+
+	return false;
 }
 
 /**
@@ -69,11 +74,13 @@ function get_plugin_options() {
  */
 function update_stored_key( $value ) {
 	$options = get_plugin_options();
+
 	if ( is_array( $options ) ) {
 		$options['lastfm_api_key'] = $value;
 		update_option( LAST_FM_PREFIX . 'plugin_options', $options );
 		return $value;
 	}
+
 	return false;
 }
 
